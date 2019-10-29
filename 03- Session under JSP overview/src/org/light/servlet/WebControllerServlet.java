@@ -39,25 +39,27 @@ public class WebControllerServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String name = request.getParameter("name");
-		String passw = request.getParameter("password");
-		
-
-		if (name.equals("Filipe") && passw.equals("Ribeiro")) {
-			UserMember usermember=new UserMember();
-			usermember.setName(name);
-			usermember.setPassWord(passw);
+	String name = request.getParameter("username");
+	String passw = request.getParameter("password");
+//		
+//
+	if (name.equals("Filipe") && passw.equals("Ribeiro")) {
+//		
 			
 			request.getSession().invalidate();
 			//returns the HttpSession associated with this request and invalidate if any 
 			HttpSession newSession= request.getSession(true);
+
+			UserMember usermember=new UserMember();
+			usermember.setName(name);
+			usermember.setKeyword(passw);
 			newSession.setAttribute("ref", usermember);
-			
 			//creating here a new session 			
 			newSession.setMaxInactiveInterval(300);
 			//setting here the max inactivity to 300  
 			//response.sendRedirect("memberList.jsp");
 			//we will redirect the response to that list!
+
 
 			request.getRequestDispatcher("/memberList.jsp").forward(request, response);	
 			//we will redirect the request to member list in order to use setPropriety and getPropriety
@@ -65,7 +67,9 @@ public class WebControllerServlet extends HttpServlet {
 		response.sendRedirect("login.jsp");
 			//if login incorrect than we redirect to login
 		}
+	
 
 	}
 
 }
+//

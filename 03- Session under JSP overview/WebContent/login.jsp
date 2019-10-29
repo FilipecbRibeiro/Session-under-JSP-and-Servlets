@@ -10,8 +10,8 @@
 <form action="<%= request.getContextPath() %>/WebControllerServlet" method="post">
 <%--form sent to servlet --%>
 
-UserName: <input type="text" name="name" value="Enter username"><br>
-PassWord: <input type="password" name="password"> <br>
+Username: <input type="text" name="username" ><br/>
+Password: <input type="password" name="password"><br/>
 <input type="submit" value="submit">
 
 </form>
